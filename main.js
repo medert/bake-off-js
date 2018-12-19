@@ -25,8 +25,26 @@ let weekBakes = (week) => {
   return output;
 };
 
-let bakesWith = () => {
+let bakesWith = (word) => {
 
+  let list = []
+  signatureBakes.forEach((week) => {
+    week.forEach((bake) =>{
+      if(bake.includes(word) === true){
+         list.push(bake);
+      };
+    })
+  })
+  let output = []
+
+  output.push(`There are ${list.length} bakes with the word ${word} in the title`)
+
+  let index = 1
+  list.forEach((item)=>{
+    output.push(`${index}. ${theBaker(item)} baked ${item}.`)
+    index += 1
+  })
+  return output;
 };
 //
 // let doTheyExist = () => {
@@ -103,25 +121,25 @@ console.log(bakesWith("Rosemary"));
 
 // No Bobby was not a contest
 
-console.log(doTheyExist("Martha"));
-console.log(doTheyExist("Tony"));
-
-// 5b.  If Martha and Tony do exist what did they bake in week 3? For this question you'll want to update your nameThatBake function so that in the event that we give it a name that is not in the list of bakers your output should tell us that they are not in the program and that they baked nothing.
-console.log(nameThatBake(3, "Martha"));
-console.log(nameThatBake(2, "Tony"));
-
-//6. Add your name to the bakers array and add an array of 3 bakes to the signatureBakes array. You'll need to create a `addABaker` function which should take 2 arguments, a name and an array with 3 bakes.
-
-console.log(addABaker("Tony", ["Awesome Cake", "Snappy Biscuits", "Cheesy Bread"]));
-
- // 7. Create a function called `printBakeSummary` that returns each baker with their bakes listed below. The function should take 2 arguments, the first the array of bakers, the second the nested array of bakes. The output should be formatted like so:
-// Bobby
-// Week 1: Lemon Swiss Roll with Hot Sauce
-// Week 2: Lemon Crackers
-// Week 3. Lemon Bread with Blue Cheese
-// Susan
-// Week 1: Hot Dog Swiss Roll
-// etc etc etc
-
-
-console.log(printBakeSummary(bakers, signatureBakes));
+// console.log(doTheyExist("Martha"));
+// console.log(doTheyExist("Tony"));
+//
+// // 5b.  If Martha and Tony do exist what did they bake in week 3? For this question you'll want to update your nameThatBake function so that in the event that we give it a name that is not in the list of bakers your output should tell us that they are not in the program and that they baked nothing.
+// console.log(nameThatBake(3, "Martha"));
+// console.log(nameThatBake(2, "Tony"));
+//
+// //6. Add your name to the bakers array and add an array of 3 bakes to the signatureBakes array. You'll need to create a `addABaker` function which should take 2 arguments, a name and an array with 3 bakes.
+//
+// console.log(addABaker("Tony", ["Awesome Cake", "Snappy Biscuits", "Cheesy Bread"]));
+//
+//  // 7. Create a function called `printBakeSummary` that returns each baker with their bakes listed below. The function should take 2 arguments, the first the array of bakers, the second the nested array of bakes. The output should be formatted like so:
+// // Bobby
+// // Week 1: Lemon Swiss Roll with Hot Sauce
+// // Week 2: Lemon Crackers
+// // Week 3. Lemon Bread with Blue Cheese
+// // Susan
+// // Week 1: Hot Dog Swiss Roll
+// // etc etc etc
+//
+//
+// console.log(printBakeSummary(bakers, signatureBakes));
