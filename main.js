@@ -13,7 +13,11 @@ let theBaker = (bake) =>{
 let nameThatBake = (week, baker) => {
   let index_2 = week - 1;
   let index = bakers.indexOf(baker);
-  return signatureBakes[index][index_2];
+  if (doTheyExist(baker).includes('Yes')){
+    return signatureBakes[index][index_2];
+  } else {
+    return doTheyExist(baker) + ` therefore ${baker} did not bake anything!`;
+    }
 };
 
 let weekBakes = (week) => {
@@ -46,10 +50,14 @@ let bakesWith = (word) => {
   })
   return output;
 };
-//
-// let doTheyExist = () => {
-//
-// }
+
+let doTheyExist = (name) => {
+  if (bakers.includes(name) === true){
+    return `Yes ${name} is a contestant`;
+  } else {
+    return `No ${name} is not a contestant`;
+  };
+}
 //
 // let addABaker = () => {
 //
@@ -121,12 +129,12 @@ console.log(bakesWith("Rosemary"));
 
 // No Bobby was not a contest
 
-// console.log(doTheyExist("Martha"));
-// console.log(doTheyExist("Tony"));
-//
-// // 5b.  If Martha and Tony do exist what did they bake in week 3? For this question you'll want to update your nameThatBake function so that in the event that we give it a name that is not in the list of bakers your output should tell us that they are not in the program and that they baked nothing.
-// console.log(nameThatBake(3, "Martha"));
-// console.log(nameThatBake(2, "Tony"));
+console.log(doTheyExist("Martha"));
+console.log(doTheyExist("Tony"));
+
+// 5b.  If Martha and Tony do exist what did they bake in week 3? For this question you'll want to update your nameThatBake function so that in the event that we give it a name that is not in the list of bakers your output should tell us that they are not in the program and that they baked nothing.
+console.log(nameThatBake(3, "Martha"));
+console.log(nameThatBake(2, "Tony"));
 //
 // //6. Add your name to the bakers array and add an array of 3 bakes to the signatureBakes array. You'll need to create a `addABaker` function which should take 2 arguments, a name and an array with 3 bakes.
 //
